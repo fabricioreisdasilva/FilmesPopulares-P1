@@ -14,7 +14,12 @@ public class Movie implements Parcelable {
     private String cartazFilme;
     private double mediaVotos;
 
-    public Movie() {
+    public Movie(String titulo, String dataLancamento, String sinopse, String cartazFilme, double mediaVotos) {
+        this.titulo = titulo;
+        this.dataLancamento = dataLancamento;
+        this.sinopse = sinopse;
+        this.cartazFilme = cartazFilme;
+        this.mediaVotos = mediaVotos;
     }
 
     public String getTitulo() {

@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     private static final String BASE_URL_SORT_TOP_RATED  = "http://api.themoviedb.org/3/movie/top_rated?api_key=";
     private static final String LANGUAGE_URL             = "&language=pt";
 
-    //TODO: INSERIR A APIKEY NESSA VARIAVEL
+    //TODO: INSERIR A APIKEY AQUI
     private static final String THE_MOVIE_DB_API_KEY = "4c701989b6f7ef0b71c7361b0d89673f";
 
     private String baseURL;
@@ -51,15 +51,15 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
         //Inicializando o RecyclerView
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_movie_list);
-        GridLayoutManager layoutManager = new GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setHasFixedSize(true);
 
         //Inicializando o ProgressBar
         mProgressBar = (ProgressBar) findViewById(R.id.pb_load_movies);
 
         //Inicializando o adapter
         mMovieAdapter = new MovieAdapter(this);
+        mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(mMovieAdapter);
 
         //Exibe o RecyclerView
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
                 Double mediaVotos;
                 for(int i=0;i<jsonArray.length();i++){
                     titulo = jsonArray.getJSONObject(i).getString("title");
-                    dataLancamento=jsonArray.getJSONObject(i).getString("release_date");
+                        dataLancamento=jsonArray.getJSONObject(i).getString("release_date");
                     sinopse=jsonArray.getJSONObject(i).getString("overview");
                     mediaVotos=jsonArray.getJSONObject(i).getDouble("vote_average");
                     cartazFilme=jsonArray.getJSONObject(i).getString("poster_path");
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
             super.onPostExecute(movies);
             mProgressBar.setVisibility(View.INVISIBLE);
             mRecyclerView.setVisibility(View.VISIBLE);
-            mMovieAdapter.notifyDataSetChanged();
+            mMovieAdapter.refreshList(movies);
         }
     }
 

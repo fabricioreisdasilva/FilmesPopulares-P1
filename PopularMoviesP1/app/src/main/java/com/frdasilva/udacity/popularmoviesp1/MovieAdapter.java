@@ -1,5 +1,6 @@
 package com.frdasilva.udacity.popularmoviesp1;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,19 +19,28 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
     static final String TAG=MovieAdapter.class.getSimpleName();
     private Movie[] movies;
     private MovieAdapterOnClickHandler mClickHandler;
+    private Context context;
 
-    interface MovieAdapterOnClickHandler {
+    public MovieAdapter(MovieAdapterOnClickHandler mClickHandler) {
+        this.mClickHandler = mClickHandler;
+    }
+
+    public void refreshList(Movie[] listMovies) {
+        this.movies = listMovies;
+        notifyDataSetChanged();
+    }
+
+    public interface MovieAdapterOnClickHandler {
         void onClick(Movie movie);
     }
 
-    public MovieAdapter(MovieAdapterOnClickHandler clickHandler) {
-        this.mClickHandler = clickHandler;
-    }
 
     @Override
     public MovieAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        context = parent.getContext();
         int layoutId = R.layout.movie_list_item;
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        LayoutInflater inflater = LayoutInflater.from(context);
+
         View view = inflater.inflate(layoutId, parent, false);
         MovieAdapterViewHolder adapterViewHolder = new MovieAdapterViewHolder(view);
         return adapterViewHolder;
@@ -39,7 +49,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
     @Override
     public void onBindViewHolder(MovieAdapterViewHolder holder, int position) {
         String imagem = movies[position].getCartazFilme();
-        Picasso.with(holder.itemView.getContext()).load(imagem).into(holder.mImageView);
+        Picasso.with(context).load(imagem).into(holder.mImageView);
 
     }
 
@@ -52,10 +62,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
         }
     }
 
-    public class MovieAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        public final ImageView mImageView;
+    class MovieAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        final ImageView mImageView;
 
-        public MovieAdapterViewHolder(View itemView) {
+        MovieAdapterViewHolder(View itemView) {
             super(itemView);
             mImageView = (ImageView) itemView.findViewById(R.id.iv_movie_poster);
             itemView.setOnClickListener(this);

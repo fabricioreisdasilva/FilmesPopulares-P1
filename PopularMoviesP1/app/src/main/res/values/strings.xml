@@ -3,4 +3,6 @@
 
     <string name="action_sort_popularity">Mais Populares</string>
     <string name="action_sort_rate">Melhores Avaliados</string>
+
+    <string name="content_description_cartaz">Cartaz do Filme</string>
 </resources>

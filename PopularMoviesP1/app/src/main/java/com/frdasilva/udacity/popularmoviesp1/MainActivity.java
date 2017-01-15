@@ -62,12 +62,16 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(mMovieAdapter);
 
+        //Carrega filmes no RecyclerView
+        loadMovies();
+    }
+
+    public void loadMovies() {
         //Exibe o RecyclerView
         mRecyclerView.setVisibility(View.VISIBLE);
 
         //Inicia o thread
         new FetchMovieTask().execute();
-
     }
 
     @Override
@@ -130,16 +134,18 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
                 JSONObject jsonObject = new JSONObject(jsonString);
                 JSONArray jsonArray = jsonObject.getJSONArray("results");
                 Movie[] container = new Movie[jsonArray.length()];
-                String titulo, dataLancamento, sinopse, cartazFilme, cartazFilmeCompleto;
+                String titulo, dataLancamento, sinopse, cartazFilme, cartazFilmeCompleto, backgroundImage, bgImageCompleto;
                 Double mediaVotos;
                 for(int i=0;i<jsonArray.length();i++){
                     titulo = jsonArray.getJSONObject(i).getString("title");
-                        dataLancamento=jsonArray.getJSONObject(i).getString("release_date");
-                    sinopse=jsonArray.getJSONObject(i).getString("overview");
-                    mediaVotos=jsonArray.getJSONObject(i).getDouble("vote_average");
-                    cartazFilme=jsonArray.getJSONObject(i).getString("poster_path");
-                    cartazFilmeCompleto="http://image.tmdb.org/t/p/w342"+cartazFilme;
-                    container[i]=new Movie(titulo,dataLancamento,sinopse,cartazFilmeCompleto,mediaVotos);
+                        dataLancamento = jsonArray.getJSONObject(i).getString("release_date");
+                    sinopse = jsonArray.getJSONObject(i).getString("overview");
+                    mediaVotos = jsonArray.getJSONObject(i).getDouble("vote_average");
+                    cartazFilme = jsonArray.getJSONObject(i).getString("poster_path");
+                    backgroundImage = jsonArray.getJSONObject(i).getString("backdrop_path");
+                    cartazFilmeCompleto = "http://image.tmdb.org/t/p/w342"+cartazFilme;
+                    bgImageCompleto = "http://image.tmdb.org/t/p/w342"+backgroundImage;
+                    container[i]=new Movie(titulo,dataLancamento,sinopse,cartazFilmeCompleto,bgImageCompleto,mediaVotos);
                 }
 
                 return container;
@@ -177,5 +183,27 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
             topRated.setVisible(false);
         }
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int idItemSelected = item.getItemId();
+
+        //Ordenado por Popularidade
+        if (idItemSelected == R.id.menu_sort_popularity) {
+            sortByPopularity = true;
+            loadMovies();
+            popular.setVisible(false);
+            topRated.setVisible(true);
+        }
+
+        //Ordenado por Melhore Avaliado
+        if (idItemSelected == R.id.menu_sort_rate) {
+            sortByPopularity = false;
+            loadMovies();
+            popular.setVisible(true);
+            topRated.setVisible(false);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

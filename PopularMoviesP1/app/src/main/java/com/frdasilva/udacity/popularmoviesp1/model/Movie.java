@@ -12,14 +12,16 @@ public class Movie implements Parcelable {
     private String dataLancamento;
     private String sinopse;
     private String cartazFilme;
+    private String backgroundImage;
     private Double mediaVotos;
 
-    public Movie(String titulo, String dataLancamento, String sinopse, String cartazFilme, double mediaVotos) {
+    public Movie(String titulo, String dataLancamento, String sinopse, String cartazFilme, String backgroundImage, double mediaVotos) {
         this.titulo = titulo;
         this.dataLancamento = dataLancamento;
         this.sinopse = sinopse;
         this.cartazFilme = cartazFilme;
         this.mediaVotos = mediaVotos;
+        this.backgroundImage = backgroundImage;
     }
 
     public String getTitulo() {
@@ -62,11 +64,20 @@ public class Movie implements Parcelable {
         this.mediaVotos = mediaVotos;
     }
 
+    public String getBackgroundImage() {
+        return backgroundImage;
+    }
+
+    public void setBackgroundImage(String backgroundImage) {
+        this.backgroundImage = backgroundImage;
+    }
+
     protected Movie(Parcel in) {
         titulo = in.readString();
         dataLancamento = in.readString();
         sinopse = in.readString();
         cartazFilme = in.readString();
+        backgroundImage = in.readString();
         mediaVotos = in.readDouble();
     }
 
@@ -81,6 +92,7 @@ public class Movie implements Parcelable {
         dest.writeString(dataLancamento);
         dest.writeString(sinopse);
         dest.writeString(cartazFilme);
+        dest.writeString(backgroundImage);
         dest.writeDouble(mediaVotos);
     }
 

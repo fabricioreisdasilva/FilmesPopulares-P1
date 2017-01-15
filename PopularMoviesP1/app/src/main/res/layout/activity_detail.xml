@@ -10,10 +10,52 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.frdasilva.udacity.popularmoviesp1.DetailActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_detail_background_image"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="140dp"
+            android:layout_height="200dp"
+            android:contentDescription="@string/content_description_cartaz"
+            android:padding="4dp"
+            android:id="@+id/iv_detail_poster_image"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_movie_name"
+            android:background="@color/backgroundLight"
+            android:textStyle="bold"
+            android:textSize="@dimen/detail_text_title"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_movie_rate"
+            android:textStyle="bold"
+            android:textSize="@dimen/detail_text_rate"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_movie_release"
+            android:textStyle="bold"
+            android:textSize="@dimen/detail_text_release"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_movie_overview"
+            android:textStyle="bold"
+            android:textSize="@dimen/detail_text_overview"
+            />
 
     </LinearLayout>
 

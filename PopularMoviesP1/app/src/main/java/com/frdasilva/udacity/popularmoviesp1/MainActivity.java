@@ -1,5 +1,6 @@
 package com.frdasilva.udacity.popularmoviesp1;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     private static final String BASE_URL_SORT_POPULARITY = "http://api.themoviedb.org/3/movie/popular?api_key=";
     private static final String BASE_URL_SORT_TOP_RATED  = "http://api.themoviedb.org/3/movie/top_rated?api_key=";
     private static final String LANGUAGE_URL             = "&language=pt";
+    private static final String INTENT_EXTRA             = "MOVIE";
 
     //TODO: INSERIR A APIKEY AQUI
     private static final String THE_MOVIE_DB_API_KEY = "4c701989b6f7ef0b71c7361b0d89673f";
@@ -76,7 +78,9 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
     @Override
     public void onClick(Movie movie) {
-
+        Intent intent = new Intent(this,DetailActivity.class);
+        intent.putExtra(INTENT_EXTRA,movie);
+        startActivity(intent);
     }
 
     public class FetchMovieTask extends AsyncTask<Void,Void,Movie[]> {

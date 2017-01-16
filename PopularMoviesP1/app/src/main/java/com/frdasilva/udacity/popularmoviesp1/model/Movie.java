@@ -36,6 +36,14 @@ public class Movie implements Parcelable {
         return dataLancamento;
     }
 
+    //Converte a data para o formato brasileiro
+    public String getDataLancamentoFormatoBr() {
+        String dataFormatoBr;
+        dataFormatoBr = dataLancamento.substring(8) + '/' +
+                dataLancamento.substring(5,7) + '/' + dataLancamento.substring(0,4);
+        return dataFormatoBr;
+    }
+
     public void setDataLancamento(String dataLancamento) {
         this.dataLancamento = dataLancamento;
     }

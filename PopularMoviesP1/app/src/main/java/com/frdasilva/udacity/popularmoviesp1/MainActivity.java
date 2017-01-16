@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     private RecyclerView mRecyclerView;
     private MovieAdapter mMovieAdapter;
     private String TAG = MainActivity.class.getSimpleName();
-    private boolean sortByPopularity = true;
+    private static boolean sortByPopularity = true;
     private ProgressBar mProgressBar;
     private Menu menu;
     private MenuItem popular;

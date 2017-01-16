@@ -6,5 +6,5 @@
     <dimen name="detail_text_title">24sp</dimen>
     <dimen name="detail_text_rate">20sp</dimen>
     <dimen name="detail_text_release">16sp</dimen>
-    <dimen name="detail_text_overview">16sp</dimen>
+    <dimen name="detail_text_overview">14sp</dimen>
 </resources>

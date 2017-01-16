@@ -11,7 +11,7 @@ import com.frdasilva.udacity.popularmoviesp1.model.Movie;
 import com.squareup.picasso.Picasso;
 
 public class DetailActivity extends AppCompatActivity {
-    
+
     private static final String INTENT_EXTRA             = "MOVIE";
     private ImageView cartazFilme;
     private TextView tituloFilme;

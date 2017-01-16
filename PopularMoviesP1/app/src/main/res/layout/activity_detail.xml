@@ -1,58 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.frdasilva.udacity.popularmoviesp1.DetailActivity">
+    tools:context="com.frdasilva.udacity.popularmoviesp1.DetailActivity"
+    android:background="@color/backgroundLight">
 
         <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="@color/backgroundLight"
         >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:orientation="horizontal"
+                    android:background="@color/backgroundLight">
 
-        <ImageView
-            android:layout_width="140dp"
-            android:layout_height="200dp"
-            android:contentDescription="@string/content_description_cartaz"
-            android:padding="4dp"
-            android:id="@+id/iv_detail_poster_image"/>
+                        <ImageView
+                            android:layout_width="200dp"
+                            android:layout_height="300dp"
+                            android:contentDescription="@string/content_description_cartaz"
+                            android:padding="4dp"
+                            android:id="@+id/iv_detail_poster_image" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_movie_name"
-            android:background="@color/backgroundLight"
-            android:textStyle="bold"
-            android:textSize="@dimen/detail_text_title"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_movie_rate"
-            android:textStyle="bold"
-            android:textSize="@dimen/detail_text_rate"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/tv_movie_rate"
+                                    android:textStyle="bold"
+                                    android:textSize="@dimen/detail_text_rate"
+                                    android:textColor="@android:color/holo_red_light"
+                                    android:fontFamily="casual"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_movie_release"
-            android:textStyle="bold"
-            android:textSize="@dimen/detail_text_release"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/tv_movie_release"
+                                    android:textStyle="bold"
+                                    android:textSize="@dimen/detail_text_release"
+                                    android:fontFamily="casual"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_movie_overview"
-            android:textStyle="bold"
-            android:textSize="@dimen/detail_text_overview"
-            />
+                        </LinearLayout>
 
-    </LinearLayout>
+                </LinearLayout>
 
-</RelativeLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_movie_name"
+                    android:background="@color/colorPrimaryDark"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/detail_text_title"
+                    android:textColor="@android:color/white"
+                    android:padding="8dp"
+                    android:fontFamily="casual"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_movie_overview"
+                    android:textStyle="normal|bold"
+                    android:textSize="@dimen/detail_text_overview"
+                    android:padding="8dp"
+                    android:fontFamily="casual"
+                    />
+
+        </LinearLayout>
+
+</ScrollView>

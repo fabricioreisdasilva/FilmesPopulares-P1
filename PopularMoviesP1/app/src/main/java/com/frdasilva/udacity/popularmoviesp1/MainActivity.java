@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     private static final String INTENT_EXTRA             = "MOVIE";
 
     //TODO: INSERIR A APIKEY AQUI
-    private static final String THE_MOVIE_DB_API_KEY = "4c701989b6f7ef0b71c7361b0d89673f";
+    private static final String THE_MOVIE_DB_API_KEY = "";
 
     private String baseURL;
 

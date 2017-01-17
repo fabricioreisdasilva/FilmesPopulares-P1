@@ -76,11 +76,10 @@
 
                 <ImageView
                     android:layout_width="100dp"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:id="@+id/iv_logo_tmdb"
                     android:background="@drawable/tmdb_logo"
-                    android:padding="16dp"
-                    android:paddingLeft="24dp"/>
+                    android:padding="8dp" />
 
         </LinearLayout>
 

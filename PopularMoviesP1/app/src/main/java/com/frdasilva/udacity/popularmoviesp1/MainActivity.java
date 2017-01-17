@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
     private static final String BASE_URL_SORT_POPULARITY = "http://api.themoviedb.org/3/movie/popular?api_key=";
     private static final String BASE_URL_SORT_TOP_RATED  = "http://api.themoviedb.org/3/movie/top_rated?api_key=";
-    private static final String LANGUAGE_URL             = "&language=pt";
+    private static final String LANGUAGE_URL             = "&language=pt-BR";
     private static final String INTENT_EXTRA             = "MOVIE";
 
     //TODO: INSERIR A APIKEY AQUI
